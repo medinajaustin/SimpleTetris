@@ -5,21 +5,24 @@
  
 #define BOARD_WIDTH 10              // Board width in blocks 
 #define BOARD_HEIGHT 20             // Board height in blocks
+#define NUM_BLOCKS 5                // Number of blocks in each "Stored Piece" matrix
+#define PIXEL_BLOCK_SIZE 20         // Size of each block in pixels
+#define BOARD_CENTER 500            // Number of pixels the center of the board is from the left side of the screen
 
 class Board
 {
 public:
  
-    Board(Pieces *pPieces, int pScreenHeight);
+    Board(Pieces *pieces, int screenHeight);
  
-    int getXPos(int pPos);
-    int getYPos(int pPos);
+    int getXPos(int pos);
+    int getYPos(int pos);
     
-    bool isFreeBlock(int pX, int pY);
-    bool isLegalMove(int pX, int pY, int pPiece, int pRotation);
+    bool isFree(int x, int y);
+    bool isLegalMove(int x, int y, int piece, int rotation);
     
-    void storePiece(int pX, int pY, int pPiece, int pRotation);
-    void deletePossibleLines();
+    void storePiece(int x, int y, int piece, int rotation);
+    void checkTetris();
     
     bool isGameOver();
  
@@ -31,12 +34,12 @@ private:
         TAKEN 
     };
 
-    int mBoard [BOARD_WIDTH][BOARD_HEIGHT]; 
-    Pieces *mPieces;
+    int boardMatrix [BOARD_WIDTH][BOARD_HEIGHT]; 
+    Pieces *storedPieces;
     int screenHeight;
  
     void initBoard();
-    void deleteLine(int pY);
+    void tetris(int y);
 };
  
 #endif

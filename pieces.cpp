@@ -3,7 +3,7 @@
 
 int Pieces::getPostionType(int piece, int rotation, int pos_X, int pos_Y)
 {
-    return pieces[piece][rotation][pos_X][pos_Y];
+    return storedPieces[piece][rotation][pos_X][pos_Y];
 }
  
  
@@ -26,7 +26,7 @@ int Pieces::getInitialY(int piece, int rotation)
         - Each piece (in any given configuration) can be stored in a 5x5 section
 */
 
-int storedPiece [PIECE_TYPES][NUM_ROTATIONS][NUM_X_BLOCKS][NUM_Y_BLOCKS]
+int storedPieces [PIECE_TYPES][NUM_ROTATIONS][NUM_X_BLOCKS][NUM_Y_BLOCKS]
 {
     // Square Piece
     {
